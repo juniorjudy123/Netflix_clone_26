@@ -1,16 +1,41 @@
-# React + Vite
+# Netflix_gpt
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+installed vite
+tailwind css
+-installed React router
+-Header
+-Login form
+-Sign up form
+-Use formik library for big forms
 
-Currently, two official plugins are available:
+need to download logos and images
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# Features
 
-## React Compiler
+# Browse page after authentication
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Header
+- Main Container
+  -Triler in background
+  -Title and description
+  -Movie suggestions
 
-## Expanding the ESLint configuration
+- Secondary Container
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Authentication
+
+- Login
+- Signup
+  -redirect to browse page
+
+# NetflixGpt
+
+-search bar
+-Movie suggestions
+
+# structure
+
+1. Loginpage
+   -Header
+   -LoginForm
+   -has background image (have to decide whether it should be made another component)
