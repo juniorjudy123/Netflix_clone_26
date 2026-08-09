@@ -2,7 +2,7 @@ import React from "react"
 
 const Header = () => {
 	return (
-		<div className="absolute px-8 py-4 bg-linear-to-b from-black ">
+		<div className="absolute px-12 py-6 bg-linear-to-b from-black z-10 ">
 			<img
 				className="w-40"
 				src="https://occ.a.nflxso.net/dnmt/api/v6/iL4oJVDYZ8KLSrJ6eG2OwtghbfQ/AAAAAZge2REfWoSoWRs31izjUdgihldMUslSHTdfz-1aT4vVrgJuVByU92G8wIrBkwULJHWjM1khpzW0xWndigQFYViKFpy-pM6NZFnTKEPkpf9hcdSzCyzqBbcouyIpmgVLbodhaeyqCXaS.svg"
