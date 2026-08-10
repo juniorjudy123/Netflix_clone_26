@@ -11,7 +11,8 @@ tailwind css
 -useRef hook
 -Firebase set Up
 -Deploying our app to production
--create signup in firebase
+-create signupand sign in firebase
+-redux store with userSlice
 
 need to download logos and images
 
