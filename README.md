@@ -8,6 +8,10 @@ tailwind css
 -Login form/Sign up form
 -Use formik library for big forms
 -form validations and useRef hook
+-useRef hook
+-Firebase set Up
+-Deploying our app to production
+-create signup in firebase
 
 need to download logos and images
 
@@ -45,3 +49,7 @@ need to download logos and images
 
    useRef Hook
    Regex validation
+
+   # hosting url
+
+   https://netflix-ai-64fe7.web.app
