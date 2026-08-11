@@ -3,6 +3,7 @@ import { checkValidData } from "../utils/validate"
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
+	updateProfile,
 } from "firebase/auth"
 import { auth } from "../utils/firebase"
 import { useNavigate } from "react-router-dom"
@@ -33,6 +34,9 @@ const LoginForm = () => {
 			return
 		}
 		if (!isLogin) {
+			console.log("name:", name.current.value)
+			console.log("EMAIL:", email.current.value)
+			console.log("PASSWORD:", password.current.value)
 			createUserWithEmailAndPassword(
 				auth,
 				email.current.value,
@@ -41,8 +45,16 @@ const LoginForm = () => {
 				.then((userCredential) => {
 					// Signed up
 					const user = userCredential.user
-					console.log(user)
-					navigate("/browse")
+					updateProfile(user, {
+						displayName: name.current.value,
+						photoURL: "https://example.com/jane-q-user/profile.jpg",
+					})
+						.then(() => {
+							navigate("/browse")
+						})
+						.catch((error) => {
+							SetErrorMsg(error.message)
+						})
 				})
 				.catch((error) => {
 					const errorCode = error.code
@@ -88,7 +100,7 @@ const LoginForm = () => {
 			)}
 			<input
 				ref={email}
-				type="text"
+				type="email"
 				placeholder="Email"
 				className="p-4 my-4 bg-gray-800 w-full  "
 			/>
