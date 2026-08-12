@@ -7,11 +7,13 @@ import {
 } from "firebase/auth"
 import { auth } from "../utils/firebase"
 import { useNavigate } from "react-router-dom"
+import { addUser } from "../redux/userSlice"
+import { useDispatch } from "react-redux"
 
 const LoginForm = () => {
 	const [isLogin, setIsLogin] = useState(true)
 	const [errorMsg, SetErrorMsg] = useState(false)
-	const navigate = useNavigate()
+	const dispatch = useDispatch()
 
 	const email = useRef(null)
 	const password = useRef(null)
@@ -34,33 +36,34 @@ const LoginForm = () => {
 			return
 		}
 		if (!isLogin) {
-			console.log("name:", name.current.value)
-			console.log("EMAIL:", email.current.value)
-			console.log("PASSWORD:", password.current.value)
 			createUserWithEmailAndPassword(
 				auth,
 				email.current.value,
 				password.current.value,
 			)
-				.then((userCredential) => {
-					// Signed up
+				.then(async (userCredential) => {
 					const user = userCredential.user
-					updateProfile(user, {
+
+					await updateProfile(user, {
 						displayName: name.current.value,
 						photoURL: "https://example.com/jane-q-user/profile.jpg",
 					})
-						.then(() => {
-							navigate("/browse")
-						})
-						.catch((error) => {
-							SetErrorMsg(error.message)
-						})
+
+					await user.reload()
+
+					const updatedUser = auth.currentUser
+
+					dispatch(
+						addUser({
+							uid: updatedUser.uid,
+							email: updatedUser.email,
+							displayName: updatedUser.displayName,
+							photoURL: updatedUser.photoURL,
+						}),
+					)
 				})
 				.catch((error) => {
-					const errorCode = error.code
-					const errorMessage = error.message
-					SetErrorMsg(errorCode + "- " + errorMessage)
-					// ..
+					SetErrorMsg(error.code + " - " + error.message)
 				})
 		} else {
 			signInWithEmailAndPassword(
@@ -71,8 +74,6 @@ const LoginForm = () => {
 				.then((userCredential) => {
 					// Signed in
 					const user = userCredential.user
-					console.log(user)
-					navigate("/browse")
 				})
 				.catch((error) => {
 					const errorCode = error.code
