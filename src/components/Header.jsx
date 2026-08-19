@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { addUser, removeUser } from "../redux/userSlice"
+import { LOGO } from "../utils/constants"
 
 const Header = () => {
 	const dispatch = useDispatch()
@@ -28,6 +29,7 @@ const Header = () => {
 				navigate("/")
 			}
 		})
+		// unsubscribe when component unmounts
 		return () => unsubscribe()
 	}, [])
 
@@ -39,12 +41,8 @@ const Header = () => {
 			})
 	}
 	return (
-		<div className="absolute w-screen px-12 py-6 bg-linear-to-b from-black z-10 flex justify-between ">
-			<img
-				className="w-40"
-				src="https://occ.a.nflxso.net/dnmt/api/v6/iL4oJVDYZ8KLSrJ6eG2OwtghbfQ/AAAAAZge2REfWoSoWRs31izjUdgihldMUslSHTdfz-1aT4vVrgJuVByU92G8wIrBkwULJHWjM1khpzW0xWndigQFYViKFpy-pM6NZFnTKEPkpf9hcdSzCyzqBbcouyIpmgVLbodhaeyqCXaS.svg"
-				alt="netflix-logo"
-			/>
+		<div className="relative w-screen px-12 py-6 bg-linear-to-b from-black z-10  flex justify-between  ">
+			<img className="w-40" src={LOGO} alt="netflix-logo" />
 			{user && (
 				<div className=" flex gap-6">
 					<img

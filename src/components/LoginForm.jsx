@@ -85,7 +85,7 @@ const LoginForm = () => {
 
 	return (
 		<form
-			className="bg-black/70 p-10 w-full max-w-sm rounded-md text-white"
+			className="bg-black/70 p-10  w-full max-w-sm rounded-md text-white"
 			onSubmit={handleSubmit}
 		>
 			<h1 className="font-bold text-3xl py-4 ">
