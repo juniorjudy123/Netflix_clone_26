@@ -5,6 +5,7 @@ function VideoBackground({ movieId }) {
 	const trailerVideo = useSelector((store) => store.movies?.trailerVideo)
 
 	useTrailerVideos(movieId)
+  
 	if (!trailerVideo) return null
 
 	return (

@@ -20,16 +20,16 @@ const useTrailerVideos = (movieId) => {
                 throw new Error(`HTTP error: ${response.status}`)
             }
             const data = await response.json()
-            console.log("data", data)
+
 
             const filteredData = data.results.filter(
                 (video) => video.type === "Trailer",
             )
             const trailer = filteredData.length ? filteredData[0] : data.results[0]
-            console.log("trailer", trailer)
+
             dispatch(addTrailerVideo(trailer))
 
-            console.log("trailer", trailer)
+
         } catch (error) {
             console.error("Failed to fetch trailer videos:", error)
         }

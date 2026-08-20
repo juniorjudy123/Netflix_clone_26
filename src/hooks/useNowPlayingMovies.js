@@ -15,7 +15,7 @@ const useNowPlayingMovies = () => {
                 throw new Error(`HTTP error: ${response.status}`)
             }
             const data = await response.json()
-            console.log(data.results)
+
             dispatch(addNowPlayingMovies(data.results))
         } catch (error) {
             console.error("Failed to fetch now playing movies:", error)
