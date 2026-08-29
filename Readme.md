@@ -67,3 +67,31 @@ need to download logos and images
    # hosting url
 
    https://netflix-ai-64fe7.web.app
+
+# Engineering decisions
+
+decided not to create a movie model just to duplicate TMDB data. tmdb already owns that information 
+
+
+ database 
+
+user_id    tmdb_movie_id    added_at
+1          550              ...
+1          603              ...
+2          27205            ...
+
+Then when the user opens their watchlist:
+
+React
+   ↓
+GET /api/watchlist/
+   ↓
+Django
+   ↓
+Database → movie IDs
+   ↓
+TMDB → movie details
+   ↓
+Django
+   ↓
+React
