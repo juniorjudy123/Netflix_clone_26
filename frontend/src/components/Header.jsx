@@ -4,13 +4,15 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { addUser, removeUser } from "../redux/userSlice"
-import { LOGO } from "../utils/constants"
+import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants"
 import { toggleGeminiSearchView } from "../redux/geminiSlice"
+import { changeLang } from "../redux/configSlice"
 
 const Header = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const user = useSelector((store) => store.user)
+	const GeminiSearch = useSelector((store) => store.gemini.showGeminiSearch)
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -45,17 +47,32 @@ const Header = () => {
 	const handleGeminiSearchClick = () => {
 		dispatch(toggleGeminiSearchView())
 	}
+	const handleLangChange = (e) => {
+		dispatch(changeLang(e.target.value))
+	}
 
 	return (
 		<div className="relative w-screen px-12 py-6 bg-linear-to-b from-black z-10  flex justify-between  ">
 			<img className="w-40" src={LOGO} alt="netflix-logo" />
 			{user && (
 				<div className=" flex gap-8">
+					{GeminiSearch && (
+						<select
+							className="text-white bg-gray-900 opacity-80 rounded-lg p-2"
+							onClick={handleLangChange}
+						>
+							{SUPPORTED_LANGUAGES.map((lang) => (
+								<option key={lang.identifier} value={lang.identifier}>
+									{lang.name}
+								</option>
+							))}
+						</select>
+					)}
 					<button
 						className="text-white px-2 bg-purple-600 rounded-lg cursor-pointer "
 						onClick={handleGeminiSearchClick}
 					>
-						GeminiSearch
+						{GeminiSearch ? "< Back" : "GeminiSearch"}
 					</button>
 					<img
 						alt="user-icon"

@@ -10,3 +10,12 @@ export const API_OPTIONS = {
 
 export const GEMINI_API_KEY = import.meta.VITE_TMDB_API_KEY
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w780/"
+
+export const BG_URL = "https://assets.nflxext.com/ffe/siteui/vlv3/0ce6c17e-e188-4f13-aaf2-6366e12ba739/web/IN-en-20260803-TRIFECTA-perspective_7730cca2-6324-4104-bf66-1a1f6e1a3e61_large.jpg"
+
+
+export const SUPPORTED_LANGUAGES = [
+    { identifier: 'en', name: "English" },
+    { identifier: 'hindi', name: "Hindi" },
+    { identifier: 'spanish', name: "Spanish" }
+]
