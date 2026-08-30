@@ -1,10 +1,10 @@
-import Header from "../components/Header"
-import LoginForm from "../components/LoginForm"
+import React from "react"
+import GeminiSearchBar from "../components/GeminiSearchBar"
+import GeminiMovieSuggestions from "../components/GeminiMovieSuggestions"
 
-const LoginPage = () => {
+function GeminiSearchPage() {
 	return (
 		<div>
-			<Header />
 			<div className="absolute inset-0 -z-10">
 				<img
 					className=" h-full w-full object-cover"
@@ -12,11 +12,10 @@ const LoginPage = () => {
 					alt="background-img"
 				/>
 			</div>
-			<div className="flex justify-center items-center min-h-[calc(100vh-80px)]">
-				<LoginForm />
-			</div>
+			<GeminiSearchBar />
+			<GeminiMovieSuggestions />
 		</div>
 	)
 }
 
-export default LoginPage
+export default GeminiSearchPage

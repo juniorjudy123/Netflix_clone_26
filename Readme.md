@@ -29,6 +29,8 @@ need to download logos and images
 - learned early return in hero component
 - overview in videotitle misaligned - used leading-relaxed text-justify in tailwind css
 
+- GPT search feature 
+
 # Features
 
 # Browse page after authentication
