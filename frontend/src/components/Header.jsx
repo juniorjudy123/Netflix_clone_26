@@ -52,10 +52,10 @@ const Header = () => {
 	}
 
 	return (
-		<div className="relative w-screen px-12 py-6 bg-linear-to-b from-black z-10  flex justify-between  ">
-			<img className="w-40" src={LOGO} alt="netflix-logo" />
+		<div className="relative w-screen px-12 py-8 bg-linear-to-b from-black z-10  flex flex-col md:flex-row justify-between  ">
+			<img className="w-40 mx-auto md:mx-0" src={LOGO} alt="netflix-logo" />
 			{user && (
-				<div className=" flex gap-8">
+				<div className=" flex gap-8 py-8 md:py-0">
 					{GeminiSearch && (
 						<select
 							className="text-white bg-gray-900 opacity-80 rounded-lg p-2"
