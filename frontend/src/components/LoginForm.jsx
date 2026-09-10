@@ -1,21 +1,16 @@
 import { useRef, useState } from "react"
 import { checkValidData } from "../utils/validate"
-import {
-	createUserWithEmailAndPassword,
-	signInWithEmailAndPassword,
-	updateProfile,
-} from "firebase/auth"
-import { auth } from "../utils/firebase"
-import { useNavigate } from "react-router-dom"
+
 import { addUser } from "../redux/userSlice"
 import { useDispatch } from "react-redux"
+import axios from "axios"
 
 const LoginForm = () => {
 	const [isLogin, setIsLogin] = useState(true)
 	const [errorMsg, SetErrorMsg] = useState(false)
 	const dispatch = useDispatch()
 
-	const email = useRef(null)
+	const username = useRef(null)
 	const password = useRef(null)
 	const name = useRef(null)
 
@@ -23,11 +18,11 @@ const LoginForm = () => {
 		setIsLogin(!isLogin)
 	}
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault()
 
 		const message = checkValidData(
-			email.current.value,
+			username.current.value,
 			password.current.value,
 			!isLogin ? name.current.value : "",
 		)
@@ -66,20 +61,16 @@ const LoginForm = () => {
 					SetErrorMsg(error.code + " - " + error.message)
 				})
 		} else {
-			signInWithEmailAndPassword(
-				auth,
-				email.current.value,
-				password.current.value,
-			)
-				.then((userCredential) => {
-					// Signed in
-					const user = userCredential.user
+			try {
+				const response = await axios.post("http://127.0.0.1:8000/api/token/", {
+					username: username.current.value,
+					password: password.current.value,
 				})
-				.catch((error) => {
-					const errorCode = error.code
-					const errorMessage = error.message
-					SetErrorMsg(errorCode + "- " + errorMessage)
-				})
+
+				console.log(response.data)
+			} catch (error) {
+				SetErrorMsg("Invalid username or password")
+			}
 		}
 	}
 
@@ -100,9 +91,9 @@ const LoginForm = () => {
 				/>
 			)}
 			<input
-				ref={email}
-				type="email"
-				placeholder="Email"
+				ref={username}
+				type="text"
+				placeholder="Username"
 				className="p-4 my-4 bg-gray-800 w-full  "
 			/>
 			<input
