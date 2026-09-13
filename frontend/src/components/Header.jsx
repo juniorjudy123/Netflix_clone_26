@@ -1,9 +1,6 @@
-import { onAuthStateChanged, signOut } from "firebase/auth"
-import { auth } from "../utils/firebase"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
-import { addUser, removeUser } from "../redux/userSlice"
+import { removeUser } from "../redux/userSlice"
 import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants"
 import { toggleGeminiSearchView } from "../redux/geminiSlice"
 import { changeLang } from "../redux/configSlice"
@@ -14,34 +11,11 @@ const Header = () => {
 	const user = useSelector((store) => store.user)
 	const GeminiSearch = useSelector((store) => store.gemini.showGeminiSearch)
 
-	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, (user) => {
-			if (user) {
-				const { uid, email, displayName, photoURL } = user
-				dispatch(
-					addUser({
-						uid: uid,
-						email: email,
-						displayName: displayName,
-						photoURL: photoURL,
-					}),
-				)
-				navigate("/browse")
-			} else {
-				dispatch(removeUser())
-				navigate("/")
-			}
-		})
-		// unsubscribe when component unmounts
-		return () => unsubscribe()
-	}, [])
-
 	const handleSignOut = () => {
-		signOut(auth)
-			.then(() => {})
-			.catch((error) => {
-				navigate("/error")
-			})
+		;(localStorage.removeItem("accessToken"),
+			localStorage.removeItem("refreshToken"))
+		dispatch(removeUser())
+		navigate("/")
 	}
 
 	const handleGeminiSearchClick = () => {

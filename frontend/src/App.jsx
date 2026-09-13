@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import LoginPage from "./pages/LoginPage"
 import BrowsePage from "./pages/BrowsePage"
+import ProtectedRoute from "./components/ProtectedRoute"
 
 function App() {
 	const appRouter = createBrowserRouter([
@@ -10,7 +11,11 @@ function App() {
 		},
 		{
 			path: "/browse",
-			element: <BrowsePage />,
+			element: (
+				<ProtectedRoute>
+					<BrowsePage />
+				</ProtectedRoute>
+			),
 		},
 	])
 

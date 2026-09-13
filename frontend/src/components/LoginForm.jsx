@@ -4,13 +4,15 @@ import { checkValidData } from "../utils/validate"
 import { addUser } from "../redux/userSlice"
 import { useDispatch } from "react-redux"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const LoginForm = () => {
+	const navigate = useNavigate()
 	const [isLogin, setIsLogin] = useState(true)
 	const [errorMsg, SetErrorMsg] = useState(false)
 	const dispatch = useDispatch()
 
-	const username = useRef(null)
+	const email = useRef(null)
 	const password = useRef(null)
 	const name = useRef(null)
 
@@ -20,9 +22,10 @@ const LoginForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
+		SetErrorMsg("")
 
 		const message = checkValidData(
-			username.current.value,
+			email.current.value,
 			password.current.value,
 			!isLogin ? name.current.value : "",
 		)
@@ -30,50 +33,51 @@ const LoginForm = () => {
 			SetErrorMsg(message)
 			return
 		}
-		if (!isLogin) {
-			createUserWithEmailAndPassword(
-				auth,
-				email.current.value,
-				password.current.value,
-			)
-				.then(async (userCredential) => {
-					const user = userCredential.user
 
-					await updateProfile(user, {
-						displayName: name.current.value,
-						photoURL: "https://example.com/jane-q-user/profile.jpg",
-					})
+		try {
+			if (!isLogin) {
+				// SIGN UP
+				const response = await axios.post(
+					"http://127.0.0.1:8000/api/register/",
+					{
+						name: name.current.value,
+						email: email.current.value,
+						password: password.current.value,
+					},
+				)
 
-					await user.reload()
-
-					const updatedUser = auth.currentUser
-
-					dispatch(
-						addUser({
-							uid: updatedUser.uid,
-							email: updatedUser.email,
-							displayName: updatedUser.displayName,
-							photoURL: updatedUser.photoURL,
-						}),
-					)
-				})
-				.catch((error) => {
-					SetErrorMsg(error.code + " - " + error.message)
-				})
-		} else {
-			try {
+				const { access, refresh } = response.data
+				console.log("Access:", access)
+				console.log("Refresh:", refresh)
+			} else {
+				// LOGIN
 				const response = await axios.post("http://127.0.0.1:8000/api/token/", {
-					username: username.current.value,
+					email: email.current.value,
 					password: password.current.value,
 				})
 
-				console.log(response.data)
-			} catch (error) {
-				SetErrorMsg("Invalid username or password")
+				const { access, refresh } = response.data
+
+				localStorage.setItem("accessToken", access)
+				localStorage.setItem("refreshToken", refresh)
+
+				const profileResponse = await axios.get(
+					"http://127.0.0.1:8000/api/profile/",
+					{
+						headers: {
+							Authorization: `Bearer ${access}`,
+						},
+					},
+				)
+
+				dispatch(addUser(profileResponse.data))
+				navigate("/browse")
 			}
+		} catch (error) {
+			console.log(error)
+			SetErrorMsg(error.response?.data?.error || "Something went wrong")
 		}
 	}
-
 	return (
 		<form
 			className="bg-black/70 p-10  w-full max-w-sm rounded-md text-white"
@@ -91,9 +95,9 @@ const LoginForm = () => {
 				/>
 			)}
 			<input
-				ref={username}
-				type="text"
-				placeholder="Username"
+				ref={email}
+				type="email"
+				placeholder="email"
 				className="p-4 my-4 bg-gray-800 w-full  "
 			/>
 			<input
