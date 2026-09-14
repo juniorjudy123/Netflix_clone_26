@@ -5,6 +5,7 @@ import { addUser } from "../redux/userSlice"
 import { useDispatch } from "react-redux"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import axiosInstance from "../utils/axios"
 
 const LoginForm = () => {
 	const navigate = useNavigate()
@@ -61,14 +62,15 @@ const LoginForm = () => {
 				localStorage.setItem("accessToken", access)
 				localStorage.setItem("refreshToken", refresh)
 
-				const profileResponse = await axios.get(
-					"http://127.0.0.1:8000/api/profile/",
-					{
-						headers: {
-							Authorization: `Bearer ${access}`,
-						},
-					},
-				)
+				const profileResponse = await axiosInstance.get("profile/")
+				// axios.get(
+				// 	"http://127.0.0.1:8000/api/profile/",
+				// 	{
+				// 		headers: {
+				// 			Authorization: `Bearer ${access}`,
+				// 		},
+				// 	},
+				// )
 
 				dispatch(addUser(profileResponse.data))
 				navigate("/browse")

@@ -8,12 +8,12 @@ import { changeLang } from "../redux/configSlice"
 const Header = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
-	const user = useSelector((store) => store.user)
+	const user = useSelector((store) => store.user.user)
 	const GeminiSearch = useSelector((store) => store.gemini.showGeminiSearch)
 
 	const handleSignOut = () => {
-		;(localStorage.removeItem("accessToken"),
-			localStorage.removeItem("refreshToken"))
+		(localStorage.removeItem("accessToken"),
+		localStorage.removeItem("refreshToken"))
 		dispatch(removeUser())
 		navigate("/")
 	}
