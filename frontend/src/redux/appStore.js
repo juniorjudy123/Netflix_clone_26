@@ -16,6 +16,6 @@ const appStore = configureStore(
     }
 )
 
-console.log(appStore.getState());
+
 
 export default appStore

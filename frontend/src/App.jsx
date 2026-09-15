@@ -5,7 +5,7 @@ import ProtectedRoute from "./components/ProtectedRoute"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { addUser, removeUser } from "./redux/userSlice"
-import axios from "axios"
+import axiosInstance from "./utils/axios"
 
 function App() {
 	const dispatch = useDispatch()
@@ -19,11 +19,7 @@ function App() {
 		}
 		const restoreUser = async () => {
 			try {
-				const response = await axios.get("http://127.0.0.1:8000/api/profile/", {
-					headers: {
-						Authorization: `Bearer ${accessToken}`,
-					},
-				})
+				const response = await axiosInstance.get("profile/")
 
 				dispatch(addUser(response.data))
 			} catch (error) {

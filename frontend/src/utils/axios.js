@@ -11,6 +11,8 @@ export default axiosInstance
 axiosInstance.interceptors.request.use((config) => {
     const accessToken = localStorage.getItem("accessToken")
 
+    // const accessToken ="Invalid-token"
+
 
     if (accessToken) {
         config.headers.Authorization = `Bearer ${accessToken}`
@@ -60,6 +62,8 @@ axiosInstance.interceptors.response.use(
                 return axiosInstance(originalRequest)
 
             } catch (refreshError) {
+                localStorage.removeItem("accessToken")
+                localStorage.removeItem("refreshToken")
 
                 return Promise.reject(refreshError)
             }
