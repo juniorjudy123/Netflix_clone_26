@@ -63,15 +63,6 @@ const LoginForm = () => {
 				localStorage.setItem("refreshToken", refresh)
 
 				const profileResponse = await axiosInstance.get("profile/")
-				// axios.get(
-				// 	"http://127.0.0.1:8000/api/profile/",
-				// 	{
-				// 		headers: {
-				// 			Authorization: `Bearer ${access}`,
-				// 		},
-				// 	},
-				// )
-
 				dispatch(addUser(profileResponse.data))
 				navigate("/browse")
 			}

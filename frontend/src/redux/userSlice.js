@@ -13,8 +13,8 @@ const userSlice = createSlice({
 
         },
         removeUser: (state) => {
-            state.user = null,
-                state.isAuthLoading = false
+            state.user = null
+            state.isAuthLoading = false
         }
 
     }

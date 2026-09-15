@@ -2,8 +2,39 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import LoginPage from "./pages/LoginPage"
 import BrowsePage from "./pages/BrowsePage"
 import ProtectedRoute from "./components/ProtectedRoute"
+import { useDispatch } from "react-redux"
+import { useEffect } from "react"
+import { addUser, removeUser } from "./redux/userSlice"
+import axios from "axios"
 
 function App() {
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		const accessToken = localStorage.getItem("accessToken")
+
+		if (!accessToken) {
+			dispatch(removeUser())
+			return
+		}
+		const restoreUser = async () => {
+			try {
+				const response = await axios.get("http://127.0.0.1:8000/api/profile/", {
+					headers: {
+						Authorization: `Bearer ${accessToken}`,
+					},
+				})
+
+				dispatch(addUser(response.data))
+			} catch (error) {
+				console.log("Session restoration failed:", error)
+
+				dispatch(removeUser())
+			}
+		}
+
+		restoreUser()
+	}, [dispatch])
 	const appRouter = createBrowserRouter([
 		{
 			path: "/",
