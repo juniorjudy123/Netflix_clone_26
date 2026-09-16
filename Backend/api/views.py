@@ -6,9 +6,11 @@ from rest_framework.decorators import api_view,permission_classes
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 
-from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import EmailTokenObtainPairSerializer
 
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import EmailTokenObtainPairSerializer,watchlistSerializer
+
+from .models import Watchlist
 
 
 @api_view(["GET"])
@@ -58,3 +60,46 @@ def register(request):
 
 class EmailTokenObtainPairView(TokenObtainPairView):
     serializer_class = EmailTokenObtainPairSerializer
+
+
+@api_view(["GET", "POST","DELETE"])
+@permission_classes([IsAuthenticated])
+def get_watchlist(request):
+
+    if request.method == "GET":
+        movies = Watchlist.objects.filter(user=request.user)
+
+        serializer = watchlistSerializer(movies, many=True)
+
+        return Response(serializer.data)
+
+    if request.method == "POST":
+        movie_id = request.data.get("tmdb_movie_id")
+
+        watchlist = Watchlist.objects.create(
+            user=request.user,
+            tmdb_movie_id=movie_id
+        )
+
+        serializer = watchlistSerializer(watchlist)
+
+        return Response(serializer.data, status=201)
+
+
+# Deleting watchlist
+
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+
+def delete_watchlist(request,id):
+        movie = Watchlist.objects.get(
+            id= id,
+            user=request.user
+        )
+        movie.delete()
+
+        return Response(
+           status =204
+            
+            )
+

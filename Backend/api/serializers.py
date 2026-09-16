@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from .models import Watchlist
 
 
 class EmailTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -33,3 +34,9 @@ class EmailTokenObtainPairSerializer(TokenObtainPairSerializer):
             "refresh": str(refresh),
             "access": str(refresh.access_token),
         }
+
+
+class watchlistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Watchlist
+        fields=['id','tmdb_movie_id','created_at']
