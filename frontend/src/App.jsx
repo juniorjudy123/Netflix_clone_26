@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { addUser, removeUser } from "./redux/userSlice"
 import axiosInstance from "./utils/axios"
+import WatchlistPage from "./pages/WatchlistPage"
 
 function App() {
 	const dispatch = useDispatch()
@@ -43,6 +44,10 @@ function App() {
 					<BrowsePage />
 				</ProtectedRoute>
 			),
+		},
+		{
+			path: "/watchlist",
+			element: <WatchlistPage />,
 		},
 	])
 

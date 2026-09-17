@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import Header from "../components/Header"
 import MainContainer from "../components/MainContainer"
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies"
@@ -8,8 +8,14 @@ import useUpcomingMovies from "../hooks/useUpComingMovies"
 import GeminiSearchPage from "./GeminiSearchPage"
 import axiosInstance from "../utils/axios"
 import { useEffect } from "react"
+import { setWatchlist } from "../redux/watchlistSlice"
 
 const BrowsePage = () => {
+	const dispatch = useDispatch()
+	const watchlistMovies = useSelector((store) => store.watchlist.movies)
+
+	console.log("REDUX WATCHLIST:", watchlistMovies)
+
 	useEffect(() => {
 		const testProfile = async () => {
 			try {
@@ -22,6 +28,23 @@ const BrowsePage = () => {
 
 		testProfile()
 	}, [])
+
+	useEffect(() => {
+		const fetchWatchlist = async () => {
+			try {
+				const response = await axiosInstance.get("watchlist/")
+
+				dispatch(setWatchlist(response.data))
+
+				console.log("WATCHLIST:", response.data)
+			} catch (error) {
+				console.log("WATCHLIST ERROR:", error)
+			}
+		}
+
+		fetchWatchlist()
+	}, [dispatch])
+
 	const showGeminiSearch = useSelector((store) => store.gemini.showGeminiSearch)
 	useNowPlayingMovies()
 	usePopularMovies()
