@@ -12,8 +12,8 @@ const Header = () => {
 	const GeminiSearch = useSelector((store) => store.gemini.showGeminiSearch)
 
 	const handleSignOut = () => {
-		(localStorage.removeItem("accessToken"),
-		localStorage.removeItem("refreshToken"))
+		;(localStorage.removeItem("accessToken"),
+			localStorage.removeItem("refreshToken"))
 		dispatch(removeUser())
 		navigate("/")
 	}
@@ -30,10 +30,16 @@ const Header = () => {
 			<img className="w-40 mx-auto md:mx-0" src={LOGO} alt="netflix-logo" />
 			{user && (
 				<div className=" flex gap-8 py-8 md:py-0">
+					<button
+						className="font-bold bg-gray-700 rounded-lg px-2 text-white cursor-pointer"
+						onClick={() => navigate("/watchlist")}
+					>
+						My Watchlist
+					</button>
 					{GeminiSearch && (
 						<select
 							className="text-white bg-gray-900 opacity-80 rounded-lg p-2"
-							onClick={handleLangChange}
+							onChange={handleLangChange}
 						>
 							{SUPPORTED_LANGUAGES.map((lang) => (
 								<option key={lang.identifier} value={lang.identifier}>
@@ -46,7 +52,7 @@ const Header = () => {
 						className="text-white px-2 bg-purple-600 rounded-lg cursor-pointer "
 						onClick={handleGeminiSearchClick}
 					>
-						{GeminiSearch ? "< Back" : "GeminiSearch"}
+						{GeminiSearch ? "< Back" : "AI Search"}
 					</button>
 					<img
 						alt="user-icon"

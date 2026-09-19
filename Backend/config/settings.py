@@ -78,9 +78,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "netflix_db",
+        "USER": "postgres",
+        "PASSWORD": "NetflixDB@2026",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 

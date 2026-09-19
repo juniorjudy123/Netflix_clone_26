@@ -9,7 +9,6 @@ import MovieList from "../components/MovieList"
 const WatchlistPage = () => {
 	const dispatch = useDispatch()
 	const [movies, setMovies] = useState([])
-	console.log("watch", movies)
 
 	const watchlistMovies = useSelector((store) => store.watchlist.movies)
 
@@ -38,8 +37,12 @@ const WatchlistPage = () => {
 							`https://api.themoviedb.org/3/movie/${movie.tmdb_movie_id}`,
 							API_OPTIONS,
 						)
+						const movieData = await response.json()
 
-						return response.json()
+						return {
+							...movieData,
+							watchlistId: movie.id,
+						}
 					}),
 				)
 
@@ -53,6 +56,8 @@ const WatchlistPage = () => {
 			fetchMovieDetails()
 		}
 	}, [watchlistMovies])
+
+	console.log("MOVIES SENT TO MOVIELIST:", movies)
 
 	// Keep your existing JSX here
 	return (
