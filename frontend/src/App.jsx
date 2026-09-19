@@ -7,6 +7,7 @@ import { useEffect } from "react"
 import { addUser, removeUser } from "./redux/userSlice"
 import axiosInstance from "./utils/axios"
 import WatchlistPage from "./pages/WatchlistPage"
+import MovieDetailsPage from "./components/MovieDetailsPage"
 
 function App() {
 	const dispatch = useDispatch()
@@ -48,6 +49,10 @@ function App() {
 		{
 			path: "/watchlist",
 			element: <WatchlistPage />,
+		},
+		{
+			path: "/movie/:movieId",
+			element: <MovieDetailsPage />,
 		},
 	])
 
