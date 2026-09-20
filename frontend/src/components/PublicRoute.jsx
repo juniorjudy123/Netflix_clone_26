@@ -1,21 +1,19 @@
 import { useSelector } from "react-redux"
 import { Navigate } from "react-router-dom"
 
-function ProtectedRoute({ children }) {
+function PublicRoute({ children }) {
 	const user = useSelector((store) => store.user.user)
-	console.log(user)
-
 	const isAuthLoading = useSelector((store) => store.user.isAuthLoading)
-	console.log(isAuthLoading)
 
 	if (isAuthLoading) {
 		return <div>Loading...</div>
 	}
 
-	if (!user) {
-		return <Navigate to="/" replace />
+	if (user) {
+		return <Navigate to="/browse" replace />
 	}
+
 	return children
 }
 
-export default ProtectedRoute
+export default PublicRoute

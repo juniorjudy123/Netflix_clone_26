@@ -88,6 +88,7 @@ const Header = () => {
 	const navigate = useNavigate()
 
 	const user = useSelector((store) => store.user.user)
+
 	const GeminiSearch = useSelector((store) => store.gemini.showGeminiSearch)
 
 	const handleSignOut = () => {

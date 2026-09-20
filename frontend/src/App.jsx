@@ -9,6 +9,7 @@ import axiosInstance from "./utils/axios"
 import WatchlistPage from "./pages/WatchlistPage"
 import MovieDetailsPage from "./components/MovieDetailsPage"
 import GeminiSearchPage from "./pages/GeminiSearchPage"
+import PublicRoute from "./components/PublicRoute"
 
 function App() {
 	const dispatch = useDispatch()
@@ -37,7 +38,11 @@ function App() {
 	const appRouter = createBrowserRouter([
 		{
 			path: "/",
-			element: <LoginPage />,
+			element: (
+				<PublicRoute>
+					<LoginPage />
+				</PublicRoute>
+			),
 		},
 		{
 			path: "/browse",
