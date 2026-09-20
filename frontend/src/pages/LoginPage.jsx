@@ -39,11 +39,11 @@ const LoginPage = () => {
 			</div>
 
 			{/* Cinematic Overlays */}
-			<div className="absolute inset-0 bg-black/50" />
+			<div className="absolute inset-0 bg-black/30" />
 
 			<div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/60" />
 
-			<div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/40" />
+			<div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/40" />
 
 			{/* Header */}
 			<Header />
@@ -70,8 +70,10 @@ const LoginPage = () => {
 								Your cinematic experience starts here.
 							</p>
 							<p className="text-xs leading-relaxed text-gray-500">
-								Powered with
-								<span className="font-bold"> Google Gemini.</span>
+								Powered by{" "}
+								<span className="font-semibold text-gray-400">
+									Google Gemini
+								</span>
 							</p>
 						</div>
 					</div>
