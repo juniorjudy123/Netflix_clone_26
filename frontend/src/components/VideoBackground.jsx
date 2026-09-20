@@ -35,6 +35,7 @@ function VideoBackground({ movieId }) {
 
 	return (
 		<div className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-black">
+			{/* Video */}
 			<iframe
 				className="absolute left-1/2 top-1/2 h-[120%] w-[180%] -translate-x-1/2 -translate-y-1/2 scale-110 md:h-[140%] md:w-[140%]"
 				src={`https://www.youtube.com/embed/${trailerVideo.key}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailerVideo.key}&modestbranding=1&rel=0`}
@@ -43,14 +44,12 @@ function VideoBackground({ movieId }) {
 				referrerPolicy="strict-origin-when-cross-origin"
 			/>
 
-			{/* Dark Overlay */}
-			<div className="absolute inset-0 bg-black/10" />
+			{/* Overlays */}
+			<div className="absolute inset-0 z-10 bg-black/10" />
 
-			{/* Left Gradient */}
-			<div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent" />
+			<div className="absolute inset-0 z-10 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
 
-			{/* Bottom Gradient */}
-			<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+			<div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 		</div>
 	)
 }

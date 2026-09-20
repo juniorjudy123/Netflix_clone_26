@@ -14,10 +14,12 @@ import VideoTitle from "./VideoTitle"
 
 const HeroContainer = ({ title, overview, movieId }) => {
 	return (
-		<section className="relative h-[80vh] min-h-[600px] overflow-hidden bg-black md:h-[90vh]">
+		<section className="relative h-[70vh] min-h-[520px] overflow-hidden bg-black md:h-[85vh]">
+			{/* Video Background */}
 			<VideoBackground movieId={movieId} />
 
-			<div className="relative z-10 flex h-full items-end pb-56 pt-40 md:pb-36 md:pt-48">
+			{/* Title Content */}
+			<div className="absolute inset-0 z-10 flex items-end pb-16 pt-32 md:pb-24">
 				<VideoTitle title={title} overview={overview} />
 			</div>
 		</section>

@@ -49,7 +49,11 @@ function App() {
 		},
 		{
 			path: "/watchlist",
-			element: <WatchlistPage />,
+			element: (
+				<ProtectedRoute>
+					<WatchlistPage />
+				</ProtectedRoute>
+			),
 		},
 		{
 			path: "/movie/:movieId",

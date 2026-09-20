@@ -97,3 +97,20 @@ TMDB → movie details
 Django
    ↓
 React
+
+
+
+
+
+V3
+
+Feature depth and engineering
+
+User profiles, improved watchlist, search history, better API validation, testing, and performance improvements.
+
+
+V4
+
+Production-oriented architecture
+
+Caching, background tasks, monitoring, CI/CD, Docker, and deeper data engineering integrations when you are ready.

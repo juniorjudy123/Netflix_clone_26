@@ -69,7 +69,7 @@ const MovieCard = ({ movie }) => {
 	return (
 		<div
 			onClick={handleMovieClick}
-			className="group relative w-36 shrink-0 cursor-pointer overflow-hidden rounded-xl bg-gray-900 shadow-lg transition-all duration-300 hover:z-20 hover:scale-105 hover:shadow-2xl md:w-48"
+			className="group relative w-36 shrink-0 cursor-pointer overflow-hidden rounded-xl bg-gray-900 shadow-lg transition-all duration-300 hover:z-20 hover:scale-105 hover:shadow-2xl md:w-48 opacity-95"
 		>
 			{/* Movie Poster */}
 			<div className="relative aspect-[2/3] overflow-hidden">
