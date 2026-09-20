@@ -46,10 +46,6 @@ const LoginForm = () => {
 						password: password.current.value,
 					},
 				)
-
-				const { access, refresh } = response.data
-				console.log("Access:", access)
-				console.log("Refresh:", refresh)
 			} else {
 				// LOGIN
 				const response = await axios.post("http://127.0.0.1:8000/api/token/", {
@@ -67,8 +63,10 @@ const LoginForm = () => {
 				navigate("/browse")
 			}
 		} catch (error) {
-			console.log(error)
-			SetErrorMsg(error.response?.data?.error || "Something went wrong")
+			SetErrorMsg(
+				error.response?.data?.error ||
+					"Login failed. Please check your credentials and try again.",
+			)
 		}
 	}
 	return (

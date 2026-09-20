@@ -1,17 +1,6 @@
 import VideoBackground from "./VideoBackground"
 import VideoTitle from "./VideoTitle"
 
-// const HeroContainer = ({ title, overview, movieId }) => {
-// 	return (
-// 		<div className="  md:pt-36 ">
-// 			<VideoBackground movieId={movieId} />
-// 			<VideoTitle title={title} overview={overview} />
-// 		</div>
-// 	)
-// }
-
-// export default HeroContainer
-
 const HeroContainer = ({ title, overview, movieId }) => {
 	return (
 		<section className="relative h-[70vh] min-h-[520px] overflow-hidden bg-black md:h-[85vh]">

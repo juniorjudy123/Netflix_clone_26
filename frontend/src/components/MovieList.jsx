@@ -1,7 +1,6 @@
 import MovieCard from "./MovieCard"
 
 const MovieList = ({ movies, title }) => {
-	console.log("MOVIES RECEIVED BY MOVIELIST:", movies)
 	return (
 		movies && (
 			<div className="p-4 ">

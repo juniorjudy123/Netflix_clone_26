@@ -37,8 +37,6 @@ const MovieCard = ({ movie }) => {
 
 			dispatch(addToWatchlist(response.data))
 			setIsAdded(true)
-
-			console.log("ADDED:", response.data)
 		} catch (error) {
 			console.log("WATCHLIST ERROR:", error)
 		} finally {
@@ -57,8 +55,6 @@ const MovieCard = ({ movie }) => {
 			await axiosInstance.delete(`watchlist/${movie.watchlistId}/`)
 
 			dispatch(removeFromWatchlist(movie.watchlistId))
-
-			console.log("REMOVED FROM WATCHLIST")
 		} catch (error) {
 			console.log("REMOVE WATCHLIST ERROR:", error)
 		} finally {

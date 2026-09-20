@@ -13,15 +13,11 @@ import Footer from "../components/Footer"
 
 const BrowsePage = () => {
 	const dispatch = useDispatch()
-	const watchlistMovies = useSelector((store) => store.watchlist.movies)
-
-	console.log("REDUX WATCHLIST:", watchlistMovies)
 
 	useEffect(() => {
 		const testProfile = async () => {
 			try {
 				const response = await axiosInstance.get("profile/")
-				console.log("PROFILE:", response.data)
 			} catch (error) {
 				console.log("PROFILE ERROR:", error)
 			}
@@ -36,8 +32,6 @@ const BrowsePage = () => {
 				const response = await axiosInstance.get("watchlist/")
 
 				dispatch(setWatchlist(response.data))
-
-				console.log("WATCHLIST:", response.data)
 			} catch (error) {
 				console.log("WATCHLIST ERROR:", error)
 			}

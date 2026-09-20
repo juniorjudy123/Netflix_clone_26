@@ -1,29 +1,3 @@
-// function VideoTitle({ title, overview }) {
-// 	return (
-// 		<div className="w-full max-w-xl px-6 md:px-12 lg:px-16">
-// 			<h1 className="text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl">
-// 				{title}
-// 			</h1>
-
-// 			<p className="mt-4 line-clamp-3 text-sm leading-6 text-gray-200 sm:text-base md:line-clamp-4">
-// 				{overview}
-// 			</p>
-
-// 			<div className="mt-6 flex gap-3">
-// 				<button className="rounded-md bg-white px-5 py-2.5 font-semibold text-black">
-// 					▶ Play
-// 				</button>
-
-// 				<button className="rounded-md bg-gray-500/70 px-5 py-2.5 font-semibold text-white">
-// 					More Info
-// 				</button>
-// 			</div>
-// 		</div>
-// 	)
-// }
-
-// export default VideoTitle
-
 const VideoTitle = ({ title, overview }) => {
 	return (
 		<div className="w-full max-w-2xl px-6 md:px-14 lg:px-16 py-28">
