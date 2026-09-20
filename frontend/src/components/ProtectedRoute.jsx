@@ -3,10 +3,10 @@ import { Navigate } from "react-router-dom"
 
 function ProtectedRoute({ children }) {
 	const user = useSelector((store) => store.user.user)
-	console.log(user)
+	
 
 	const isAuthLoading = useSelector((store) => store.user.isAuthLoading)
-	console.log(isAuthLoading)
+	
 
 	if (isAuthLoading) {
 		return <div>Loading...</div>
