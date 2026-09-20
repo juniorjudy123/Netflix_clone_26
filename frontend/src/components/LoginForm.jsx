@@ -73,39 +73,50 @@ const LoginForm = () => {
 	}
 	return (
 		<form
-			className="bg-black/70 p-10  w-full max-w-sm rounded-md text-white"
+			className="w-full max-w-sm rounded-md bg-black/70 p-5 text-white sm:p-6"
 			onSubmit={handleSubmit}
 		>
-			<h1 className="font-bold text-3xl py-4 ">
+			<h1 className="py-2 text-2xl font-bold">
 				{isLogin ? "Login" : "Register"}
 			</h1>
+
 			{!isLogin && (
 				<input
 					ref={name}
 					type="text"
 					placeholder="Name"
-					className="p-4 my-4 bg-gray-800 w-full  "
+					className="my-2 w-full rounded-sm bg-gray-800 p-3 text-sm"
 				/>
 			)}
+
 			<input
 				ref={email}
 				type="email"
-				placeholder="email"
-				className="p-4 my-4 bg-gray-800 w-full  "
+				placeholder="Email"
+				className="my-2 w-full rounded-sm bg-gray-800 p-3 text-sm"
 			/>
+
 			<input
 				ref={password}
 				type="password"
 				placeholder="Password"
-				className="p-4 my-4 bg-gray-800 w-full"
+				className="my-2 w-full rounded-sm bg-gray-800 p-3 text-sm"
 			/>
-			<p className=" text-red-600">{errorMsg}</p>
-			<button className="p-4 my-6 bg-red-700 w-full " type="submit">
+
+			<p className="min-h-5 text-sm text-red-600">{errorMsg}</p>
+
+			<button
+				className="my-3 w-full rounded-sm bg-red-700 p-3 text-sm font-semibold transition hover:bg-red-800"
+				type="submit"
+			>
 				{isLogin ? "Sign In" : "Sign Up"}
 			</button>
 
-			<p className=" py-4 cursor-pointer " onClick={toggleSignInForm}>
-				{isLogin ? "New to Netflix ? Sign Up" : "Already Registered. Sign In"}
+			<p
+				className="cursor-pointer py-2 text-sm text-gray-300 hover:text-white"
+				onClick={toggleSignInForm}
+			>
+				{isLogin ? "New to Netflix? Sign Up" : "Already Registered. Sign In"}
 			</p>
 		</form>
 	)

@@ -105,6 +105,7 @@ const MovieDetailsPage = () => {
 			{/* Background Hero */}
 			<section className="relative min-h-screen overflow-hidden">
 				{/* Backdrop Image */}
+				{/* Background Image */}
 				<div
 					className="absolute inset-0 bg-cover bg-center"
 					style={{
@@ -112,13 +113,12 @@ const MovieDetailsPage = () => {
 					}}
 				/>
 
-				{/* Background Gradients */}
-				<div className="absolute inset-0 bg-black/45" />
+				{/* Lighter Background Overlays */}
+				<div className="absolute inset-0 bg-black/20" />
 
-				<div className="absolute inset-0 bg-gradient-to-r from-[#080808] via-[#080808]/85 to-[#080808]/25" />
+				<div className="absolute inset-0 bg-gradient-to-r from-[#080808]/75 via-[#080808]/35 to-transparent" />
 
-				<div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-[#080808]/70" />
-
+				<div className="absolute inset-0 bg-gradient-to-t from-[#080808]/80 via-transparent to-[#080808]/20" />
 				{/* Content */}
 				<div className="relative z-10 px-5 py-6 sm:px-8 md:px-12 lg:px-20">
 					{/* Header */}

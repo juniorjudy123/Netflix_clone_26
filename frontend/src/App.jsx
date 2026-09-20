@@ -8,6 +8,7 @@ import { addUser, removeUser } from "./redux/userSlice"
 import axiosInstance from "./utils/axios"
 import WatchlistPage from "./pages/WatchlistPage"
 import MovieDetailsPage from "./components/MovieDetailsPage"
+import GeminiSearchPage from "./pages/GeminiSearchPage"
 
 function App() {
 	const dispatch = useDispatch()
@@ -53,6 +54,10 @@ function App() {
 		{
 			path: "/movie/:movieId",
 			element: <MovieDetailsPage />,
+		},
+		{
+			path: "/gpt-search",
+			element: <GeminiSearchPage />,
 		},
 	])
 

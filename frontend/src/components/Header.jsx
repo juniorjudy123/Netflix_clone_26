@@ -79,7 +79,7 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 
 import { removeUser } from "../redux/userSlice"
-import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants"
+import { SUPPORTED_LANGUAGES } from "../utils/constants"
 import { toggleGeminiSearchView } from "../redux/geminiSlice"
 import { changeLang } from "../redux/configSlice"
 
@@ -99,6 +99,11 @@ const Header = () => {
 	}
 
 	const handleGeminiSearchClick = () => {
+		if (GeminiSearch) {
+			navigate("/browse")
+		} else {
+			navigate("/gpt-search")
+		}
 		dispatch(toggleGeminiSearchView())
 	}
 
@@ -110,13 +115,31 @@ const Header = () => {
 		<header className="absolute left-0 top-0 z-50 w-full bg-gradient-to-b from-black/80 via-black/30 to-transparent px-4 py-5 sm:px-6 md:px-10 lg:px-14">
 			<div className="mx-auto flex max-w-[1600px] flex-col gap-5 md:flex-row md:items-center md:justify-between">
 				{/* Logo */}
-				<button
+				{/* <button
 					onClick={() => navigate("/browse")}
 					className="mx-auto cursor-pointer md:mx-0"
 				>
 					<img className="w-32 sm:w-36 md:w-40" src={LOGO} alt="Netflix logo" />
+				</button> */}
+				<button
+					onClick={() => navigate("/browse")}
+					className="group mx-auto cursor-pointer md:mx-0"
+				>
+					<span
+						className="relative inline-block text-3xl font-bold tracking-tighter text-white
+        [text-shadow:2px_2px_0px_#555,4px_4px_0px_#222]
+        transition-transform duration-300 group-hover:scale-105
+        sm:text-4xl"
+					>
+						NETFLIX
+						<span
+							className="relative -top-2 ml-0.5 text-[0.85em] font-semibold text-red-600
+            [text-shadow:2px_2px_0px_#7f0000,3px_3px_0px_#350000]"
+						>
+							GPT
+						</span>
+					</span>
 				</button>
-
 				{user && (
 					<div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:justify-end">
 						{/* Watchlist */}

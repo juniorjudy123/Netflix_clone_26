@@ -28,7 +28,7 @@ import { BG_URL } from "../utils/constants"
 
 const LoginPage = () => {
 	return (
-		<main className="relative min-h-screen overflow-hidden bg-black">
+		<main className="relative h-screen overflow-hidden bg-black">
 			{/* Background Image */}
 			<div className="absolute inset-0">
 				<img
@@ -49,7 +49,7 @@ const LoginPage = () => {
 			<Header />
 
 			{/* Login Content */}
-			<section className="relative z-10 flex min-h-screen items-center justify-center px-4 pb-12 pt-36 sm:px-6">
+			<section className="relative z-10 flex min-h-screen items-center justify-center px-4 pb-12 pt-24 sm:px-6">
 				<div className="w-full max-w-md">
 					{/* Glass Login Card */}
 					<div className="rounded-2xl border border-white/15 bg-black/65 p-6 shadow-2xl backdrop-blur-xl sm:p-10">
@@ -65,9 +65,13 @@ const LoginPage = () => {
 
 						<LoginForm />
 
-						<div className="mt-8 border-t border-white/10 pt-6 text-center">
+						<div className="mt-8 border-t border-white/10 pt-4 text-center">
 							<p className="text-xs leading-relaxed text-gray-500">
 								Your cinematic experience starts here.
+							</p>
+							<p className="text-xs leading-relaxed text-gray-500">
+								Powered with
+								<span className="font-bold"> Google Gemini.</span>
 							</p>
 						</div>
 					</div>

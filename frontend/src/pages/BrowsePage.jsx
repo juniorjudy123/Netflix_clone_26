@@ -9,6 +9,7 @@ import GeminiSearchPage from "./GeminiSearchPage"
 import axiosInstance from "../utils/axios"
 import { useEffect } from "react"
 import { setWatchlist } from "../redux/watchlistSlice"
+import Footer from "../components/Footer"
 
 const BrowsePage = () => {
 	const dispatch = useDispatch()
@@ -55,6 +56,7 @@ const BrowsePage = () => {
 		<div>
 			<Header />
 			{showGeminiSearch ? <GeminiSearchPage /> : <MainContainer />}
+			<Footer />
 		</div>
 	)
 }
