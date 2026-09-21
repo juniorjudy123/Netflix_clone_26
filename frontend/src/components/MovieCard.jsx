@@ -12,6 +12,7 @@ const MovieCard = ({ movie }) => {
 	const [isAdding, setIsAdding] = useState(false)
 	const [isAdded, setIsAdded] = useState(false)
 	const [isRemoving, setIsRemoving] = useState(false)
+	const [error, setError] = useState()
 
 	if (!movie?.poster_path) return null
 
@@ -39,6 +40,8 @@ const MovieCard = ({ movie }) => {
 			setIsAdded(true)
 		} catch (error) {
 			console.log("WATCHLIST ERROR:", error)
+
+			setError("We couldn't add the movie to your watchlist.")
 		} finally {
 			setIsAdding(false)
 		}
@@ -84,7 +87,6 @@ const MovieCard = ({ movie }) => {
 					★ {rating}
 				</div>
 
-				{/* Watchlist Button */}
 				{/* Watchlist Action */}
 				<div className="absolute right-2 top-2">
 					{movie?.watchlistId ? (
@@ -107,6 +109,13 @@ const MovieCard = ({ movie }) => {
 						>
 							{isAdding ? "..." : isAdded ? "✓" : "+"}
 						</button>
+					)}
+				</div>
+				<div>
+					{error && (
+						<div className="mb-4 rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-300">
+							{error}
+						</div>
 					)}
 				</div>
 

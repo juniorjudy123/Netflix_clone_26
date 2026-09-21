@@ -11,6 +11,7 @@ function GeminiSearchBar() {
 
 	const searchText = useRef(null)
 	const [isLoading, setIsLoading] = useState(false)
+	const [error, setError] = useState("")
 
 	const searchMovieTMDB = async (movie) => {
 		const response = await fetch(
@@ -66,6 +67,7 @@ function GeminiSearchBar() {
 			)
 		} catch (error) {
 			console.error("AI search failed:", error)
+			setError("Something went wrong. Please try again.")
 		} finally {
 			setIsLoading(false)
 		}
@@ -115,7 +117,14 @@ function GeminiSearchBar() {
 						disabled={isLoading}
 						className="rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-900/20 transition hover:from-purple-500 hover:to-fuchsia-500 disabled:cursor-not-allowed disabled:opacity-60 sm:rounded-full"
 					>
-						{isLoading ? "Finding..." : lang[langkey].search}
+						{isLoading ? (
+							<span className="flex items-center justify-center gap-2">
+								<span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+								Finding...
+							</span>
+						) : (
+							lang[langkey].search
+						)}
 					</button>
 				</form>
 
