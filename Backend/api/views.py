@@ -62,13 +62,12 @@ class EmailTokenObtainPairView(TokenObtainPairView):
     serializer_class = EmailTokenObtainPairSerializer
 
 
-@api_view(["GET", "POST","DELETE"])
+@api_view(["GET", "POST"])
 @permission_classes([IsAuthenticated])
 def get_watchlist(request):
 
     if request.method == "GET":
         movies = Watchlist.objects.filter(user=request.user)
-
         serializer = watchlistSerializer(movies, many=True)
 
         return Response(serializer.data)
@@ -76,14 +75,26 @@ def get_watchlist(request):
     if request.method == "POST":
         movie_id = request.data.get("tmdb_movie_id")
 
-        watchlist = Watchlist.objects.create(
+        watchlist, created = Watchlist.objects.get_or_create(
             user=request.user,
             tmdb_movie_id=movie_id
         )
 
         serializer = watchlistSerializer(watchlist)
 
-        return Response(serializer.data, status=201)
+        if created:
+            return Response(
+                serializer.data,
+                status=201
+            )
+
+        return Response(
+            {
+                "message": "Movie already exists in your watchlist",
+                "data": serializer.data
+            },
+            status=200
+        )
 
 
 # Deleting watchlist
