@@ -5,7 +5,7 @@ import { removeUser } from "../redux/userSlice"
 import { SUPPORTED_LANGUAGES } from "../utils/constants"
 import { toggleGeminiSearchView } from "../redux/geminiSlice"
 import { changeLang } from "../redux/configSlice"
-import logo from "../../public/favicon.png"
+
 
 const Header = () => {
 	const dispatch = useDispatch()
@@ -67,7 +67,7 @@ const Header = () => {
 				</button> */}
 				<header className="flex items-center px-6 py-4">
 					<img
-						src={logo}
+						src="/favicon.png"
 						alt="NetflixGPT Logo"
 						className="w-16 h-16 object-contain"
 					/>
