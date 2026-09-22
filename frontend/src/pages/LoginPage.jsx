@@ -1,27 +1,3 @@
-// import Header from "../components/Header"
-// import LoginForm from "../components/LoginForm"
-// import { BG_URL } from "../utils/constants"
-
-// const LoginPage = () => {
-// 	return (
-// 		<div>
-// 			<Header />
-// 			<div className="absolute inset-0 -z-10">
-// 				<img
-// 					className=" h-full w-full object-cover"
-// 					src={BG_URL}
-// 					alt="background-img"
-// 				/>
-// 			</div>
-// 			<div className="flex justify-center items-center min-h-[calc(100vh-80px)]">
-// 				<LoginForm />
-// 			</div>
-// 		</div>
-// 	)
-// }
-
-// export default LoginPage
-
 import Header from "../components/Header"
 import LoginForm from "../components/LoginForm"
 import { BG_URL } from "../utils/constants"
@@ -52,7 +28,7 @@ const LoginPage = () => {
 			<section className="relative z-10 flex min-h-screen items-center justify-center px-4 pb-12 pt-24 sm:px-6">
 				<div className="w-full max-w-md">
 					{/* Glass Login Card */}
-					<div className="rounded-2xl border border-white/15 bg-black/65 p-6 shadow-2xl backdrop-blur-xl sm:p-10">
+					<div className="rounded-2xl border border-white/15 bg-black/65 p-4 shadow-2xl backdrop-blur-xl sm:p-10">
 						<div className="mb-8 text-center">
 							<h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
 								Welcome Back
