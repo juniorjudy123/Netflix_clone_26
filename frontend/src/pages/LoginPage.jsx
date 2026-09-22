@@ -25,7 +25,7 @@ const LoginPage = () => {
 			<Header />
 
 			{/* Login Content */}
-			<section className="relative z-10 flex min-h-screen items-center justify-center px-4 pb-12 pt-24 sm:px-6">
+			<section className="relative z-10 flex min-h-screen items-center justify-center px-4 py-6 sm:px-6 sm:py-12">
 				<div className="w-full max-w-md">
 					{/* Glass Login Card */}
 					<div className="rounded-2xl border border-white/15 bg-black/65 p-4 shadow-2xl backdrop-blur-xl sm:p-10">
