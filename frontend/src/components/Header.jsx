@@ -6,7 +6,6 @@ import { SUPPORTED_LANGUAGES } from "../utils/constants"
 import { toggleGeminiSearchView } from "../redux/geminiSlice"
 import { changeLang } from "../redux/configSlice"
 
-
 const Header = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
@@ -37,40 +36,16 @@ const Header = () => {
 	}
 
 	return (
-		<header className="absolute left-0 top-0 z-50 w-full bg-gradient-to-b from-black/80 via-black/30 to-transparent px-4 py-5 sm:px-6 md:px-10 lg:px-12">
-			<div className="mx-auto flex max-w-[1600px] flex-col gap-5 md:flex-row md:items-center md:justify-between">
-				{/* Logo */}
-				{/* <button
-					onClick={() => navigate("/browse")}
-					className="mx-auto cursor-pointer md:mx-0"
-				>
-					<img className="w-32 sm:w-36 md:w-40" src={LOGO} alt="Netflix logo" />
-				</button> */}
-				{/* <button
-					onClick={() => navigate("/browse")}
-					className="group mx-auto cursor-pointer md:mx-0"
-				>
-					<span
-						className="relative inline-block text-3xl font-bold tracking-tighter text-white
-        [text-shadow:2px_2px_0px_#555,4px_4px_0px_#222]
-        transition-transform duration-300 group-hover:scale-105
-        sm:text-4xl"
-					>
-						NETFLIX
-						<span
-							className="relative -top-2 ml-0.5 text-[0.85em] font-semibold text-red-600
-            [text-shadow:2px_2px_0px_#7f0000,3px_3px_0px_#350000]"
-						>
-							GPT
-						</span>
-					</span>
-				</button> */}
+		<header className="absolute left-0 top-0 z-50 w-full bg-gradient-to-b from-black/80 via-black/30 to-transparent px-4 py-2 sm:px-6 md:px-10 lg:px-12">
+			<div className="mx-auto flex max-w-[1600px] flex-col gap-2 md:flex-row md:items-center md:justify-between">
 				<header className="flex items-center px-6 py-4">
-					<img
-						src="/favicon.png"
-						alt="NetflixGPT Logo"
-						className="w-16 h-16 object-contain"
-					/>
+					<div className="flex items-center px-2 py-1">
+						<img
+							src="/favicon.png"
+							alt="NetflixGPT Logo"
+							className="h-12 w-12 object-contain sm:h-16 sm:w-16"
+						/>
+					</div>
 
 					{/* <h1 className="ml-3 text-xl font-bold text-white">NetflixGPT</h1> */}
 				</header>
