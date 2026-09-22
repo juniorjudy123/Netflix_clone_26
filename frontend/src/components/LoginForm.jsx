@@ -38,17 +38,14 @@ const LoginForm = () => {
 		try {
 			if (!isLogin) {
 				// SIGN UP
-				const response = await axios.post(
-					"http://127.0.0.1:8000/api/register/",
-					{
-						name: name.current.value,
-						email: email.current.value,
-						password: password.current.value,
-					},
-				)
+				const response = await axiosInstance.post("register/", {
+					name: name.current.value,
+					email: email.current.value,
+					password: password.current.value,
+				})
 			} else {
 				// LOGIN
-				const response = await axios.post("http://127.0.0.1:8000/api/token/", {
+				const response = await axiosInstance.post("token/", {
 					email: email.current.value,
 					password: password.current.value,
 				})
