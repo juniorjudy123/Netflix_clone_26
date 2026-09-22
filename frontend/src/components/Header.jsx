@@ -36,7 +36,7 @@ const Header = () => {
 	}
 
 	return (
-		<header className="absolute left-0 top-0 z-50 w-full bg-gradient-to-b from-black/80 via-black/30 to-transparent px-4 py-2 sm:px-6 md:px-10 lg:px-12">
+		<header className="absolute left-0 top-0 z-50 w-full bg-gradient-to-b from-black/80 via-black/30 to-transparent px-3 py-2 sm:px-6 md:px-10 lg:px-12">
 			<div className="mx-auto flex max-w-[1600px] flex-col gap-2 md:flex-row md:items-center md:justify-between">
 				<header className="flex items-center px-6 py-4">
 					<div className="flex items-center px-2 py-1">
@@ -50,7 +50,7 @@ const Header = () => {
 					{/* <h1 className="ml-3 text-xl font-bold text-white">NetflixGPT</h1> */}
 				</header>
 				{user && (
-					<div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:justify-end">
+					<div className="flex flex-wrap items-center justify-center gap-1 sm:gap-3 md:justify-end">
 						{/* Watchlist */}
 						<button
 							onClick={() => navigate("/watchlist")}
@@ -77,7 +77,7 @@ const Header = () => {
 						{/* AI Search */}
 						<button
 							onClick={handleGeminiSearchClick}
-							className="rounded-md bg-purple-600 px-3 py-2 text-xs font-semibold text-white shadow-lg transition hover:bg-purple-700 sm:px-4 sm:text-sm"
+							className="rounded-md bg-purple-600 px-2 py-1 text-xs font-semibold text-white shadow-lg transition hover:bg-purple-700 sm:px-4 sm:text-sm"
 						>
 							{GeminiSearch ? "← Back" : "AI Search"}
 						</button>
