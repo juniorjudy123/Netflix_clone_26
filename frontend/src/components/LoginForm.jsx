@@ -11,6 +11,7 @@ const LoginForm = () => {
 	const navigate = useNavigate()
 	const [isLogin, setIsLogin] = useState(true)
 	const [errorMsg, SetErrorMsg] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
 	const dispatch = useDispatch()
 
 	const email = useRef(null)
@@ -23,6 +24,7 @@ const LoginForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
+		setIsLoading(true)
 		SetErrorMsg("")
 
 		const message = checkValidData(
@@ -64,6 +66,8 @@ const LoginForm = () => {
 				error.response?.data?.error ||
 					"Login failed. Please check your credentials and try again.",
 			)
+		} finally {
+			setIsLoading(false)
 		}
 	}
 	return (
@@ -101,10 +105,20 @@ const LoginForm = () => {
 			<p className="min-h-5 text-sm text-red-600">{errorMsg}</p>
 
 			<button
-				className="my-3 w-full rounded-sm bg-red-700 p-3 text-sm font-semibold transition hover:bg-red-800"
+				disabled={isLoading}
+				className="my-3 flex w-full items-center justify-center gap-2 rounded-sm bg-red-700 p-3 text-sm font-semibold transition hover:bg-red-800 disabled:cursor-not-allowed disabled:opacity-70"
 				type="submit"
 			>
-				{isLogin ? "Sign In" : "Sign Up"}
+				{isLoading ? (
+					<>
+						<span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
+						{isLogin ? "Signing In..." : "Signing Up..."}
+					</>
+				) : isLogin ? (
+					"Sign In"
+				) : (
+					"Sign Up"
+				)}
 			</button>
 
 			<p
