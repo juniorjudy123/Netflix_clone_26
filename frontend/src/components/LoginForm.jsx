@@ -1,9 +1,7 @@
 import { useRef, useState } from "react"
 import { checkValidData } from "../utils/validate"
-
 import { addUser } from "../redux/userSlice"
 import { useDispatch } from "react-redux"
-import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import axiosInstance from "../utils/axios"
 
@@ -36,6 +34,7 @@ const LoginForm = () => {
 			SetErrorMsg(message)
 			return
 		}
+		setIsLoading(true)
 
 		try {
 			if (!isLogin) {
