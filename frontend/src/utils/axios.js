@@ -1,73 +1,73 @@
-import axios from "axios"
+import axios from "axios";
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
-})
+});
 
-export default axiosInstance
-
-
-
+// Request interceptor
 axiosInstance.interceptors.request.use((config) => {
-    const accessToken = localStorage.getItem("accessToken")
-
-
-
+    const accessToken = localStorage.getItem("accessToken");
 
     if (accessToken) {
-        config.headers.Authorization = `Bearer ${accessToken}`
+        config.headers.Authorization = `Bearer ${accessToken}`;
     }
 
-    return config
-})
+    return config;
+});
 
-
+// Response interceptor
 axiosInstance.interceptors.response.use(
-    (response) => {
-        return response
-    },
+    (response) => response,
 
     async (error) => {
+        const originalRequest = error.config;
 
-        const originalRequest = error.config
-
+        // Don't retry the refresh endpoint itself
         if (
             error.response?.status === 401 &&
-            !originalRequest._retry
+            originalRequest &&
+            !originalRequest._retry &&
+            !originalRequest.url.includes("token/refresh/")
         ) {
+            originalRequest._retry = true;
 
-            originalRequest._retry = true
+            const refreshToken = localStorage.getItem("refreshToken");
 
-            const refreshToken = localStorage.getItem("refreshToken")
+            if (!refreshToken) {
+                localStorage.removeItem("accessToken");
+                return Promise.reject(error);
+            }
 
             try {
-                const response = await axiosInstance.post(
-                    "token/refresh/",
+                // Use plain axios, NOT axiosInstance
+                const response = await axios.post(
+                    `${import.meta.env.VITE_API_BASE_URL}token/refresh/`,
                     {
                         refresh: refreshToken,
                     }
                 );
 
-                const newAccessToken = response.data.access
+                const newAccessToken = response.data.access;
 
-                localStorage.setItem(
-                    "accessToken",
-                    newAccessToken
-                )
+                localStorage.setItem("accessToken", newAccessToken);
 
                 originalRequest.headers.Authorization =
-                    `Bearer ${newAccessToken}`
+                    `Bearer ${newAccessToken}`;
 
-                return axiosInstance(originalRequest)
+                return axiosInstance(originalRequest);
 
             } catch (refreshError) {
-                localStorage.removeItem("accessToken")
-                localStorage.removeItem("refreshToken")
+                localStorage.removeItem("accessToken");
+                localStorage.removeItem("refreshToken");
 
-                return Promise.reject(refreshError)
+                window.location.href = "/";
+
+                return Promise.reject(refreshError);
             }
         }
 
-        return Promise.reject(error)
+        return Promise.reject(error);
     }
-)
+);
+
+export default axiosInstance;
