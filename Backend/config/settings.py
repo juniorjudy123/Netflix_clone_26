@@ -155,4 +155,7 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://localhost:4173",
+    "https://netflix-clone-26.vercel.app",
+    "https://netflix-clone-26-git-feature-browsepage-...vercel.app",
+    "netflix-clone-26-ol89j4wol-benoys-projects.vercel.app",
 ]
