@@ -102,6 +102,7 @@ const LoginForm = () => {
 			<input
 				ref={password}
 				type="password"
+				autoComplete="new-password"
 				placeholder="Password"
 				className="my-2 w-full rounded-sm bg-gray-800 p-3 text-sm"
 			/>
