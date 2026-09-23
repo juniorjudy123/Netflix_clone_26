@@ -45,6 +45,7 @@ const LoginForm = () => {
 					email: email.current.value,
 					password: password.current.value,
 				})
+				password.current.value = ""
 				setSuccessMsg("Account created successfully. Please sign in.")
 				SetErrorMsg("")
 				setIsLogin(true)
