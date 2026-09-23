@@ -11,7 +11,6 @@ const Header = () => {
 	const navigate = useNavigate()
 
 	const user = useSelector((store) => store.user.user)
-
 	const GeminiSearch = useSelector((store) => store.gemini.showGeminiSearch)
 
 	const handleSignOut = () => {
@@ -28,6 +27,7 @@ const Header = () => {
 		} else {
 			navigate("/gpt-search")
 		}
+
 		dispatch(toggleGeminiSearchView())
 	}
 
@@ -35,33 +35,36 @@ const Header = () => {
 		dispatch(changeLang(e.target.value))
 	}
 
+	const buttonBase =
+		"flex h-8 items-center justify-center rounded-md px-2 text-[11px] font-semibold whitespace-nowrap shadow-lg transition sm:h-9 sm:px-3 sm:text-xs md:h-10 md:px-4 md:text-sm"
+
 	return (
-		<header className="absolute left-0 top-0 z-50 w-full bg-gradient-to-b from-black/80 via-black/30 to-transparent px-3 py-2 sm:px-6 md:px-10 lg:px-12">
-			<div className="mx-auto flex max-w-[1600px] flex-col gap-2 md:flex-row md:items-center md:justify-between">
-				<header className="flex items-center px-6 py-4">
-					<div className="flex items-center px-2 py-1">
-						<img
-							src="/favicon.png"
-							alt="NetflixGPT Logo"
-							className="h-12 w-12 object-contain sm:h-16 sm:w-16"
-						/>
-					</div>
-				</header>
+		<header className="absolute left-0 top-0 z-50 w-full bg-gradient-to-b from-black/90 via-black/40 to-transparent px-3 py-2 sm:px-6 sm:py-3 md:px-10 lg:px-12">
+			<div className="mx-auto flex max-w-[1600px] items-start justify-between gap-2">
+				{/* Logo */}
+				<button onClick={() => navigate("/browse")} className="shrink-0">
+					<img
+						src="/favicon.png"
+						alt="NetflixGPT Logo"
+						className="h-11 w-11 object-contain sm:h-14 sm:w-14 md:h-16 md:w-16"
+					/>
+				</button>
+
+				{/* Navigation Actions */}
 				{user && (
-					<div className="flex flex-wrap items-center justify-center gap-1 sm:gap-3 md:justify-end">
+					<div className="flex max-w-[85%] flex-wrap items-center justify-end gap-1 sm:gap-2 md:gap-3">
 						{/* Watchlist */}
 						<button
 							onClick={() => navigate("/watchlist")}
-							// className="rounded-md border border-white/20 bg-black/30 px-3 py-2 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 sm:px-4 sm:text-sm"
-							className="flex h-9 items-center shadow-lg text-white border-white/20 bg-black/30  hover:bg-white/15 justify-center rounded-md px-3 text-xs font-semibold whitespace-nowrap transition sm:h-10 sm:px-4 sm:text-sm"
+							className={`${buttonBase} border border-white/20 bg-black/40 text-white backdrop-blur-sm hover:bg-white/15`}
 						>
-							My Watchlist
+							Watchlist
 						</button>
 
 						{/* Language Selector */}
 						{GeminiSearch && (
 							<select
-								className="rounded-md border border-white/20 bg-black/70 px-2 py-2 text-xs text-white outline-none backdrop-blur-sm sm:text-sm"
+								className="h-8 max-w-[85px] rounded-md border border-white/20 bg-black/70 px-1 text-[11px] text-white outline-none backdrop-blur-sm sm:h-9 sm:max-w-none sm:px-2 sm:text-xs md:h-10 md:text-sm"
 								onChange={handleLangChange}
 								defaultValue="en"
 							>
@@ -73,17 +76,16 @@ const Header = () => {
 							</select>
 						)}
 
-						{/* AI Search */}
+						{/* AI Search / Back */}
 						<button
 							onClick={handleGeminiSearchClick}
-							// className="rounded-md bg-purple-600 px-2 py-1 text-xs font-semibold text-white shadow-lg transition hover:bg-purple-700 sm:px-4 sm:text-sm"
-							className="flex h-9 items-center bg-purple-600 text-white shadow-lg hover:bg-purple-700 justify-center rounded-md px-3 text-xs font-semibold whitespace-nowrap transition sm:h-10 sm:px-4 sm:text-sm"
+							className={`${buttonBase} bg-purple-600 text-white hover:bg-purple-700`}
 						>
 							{GeminiSearch ? "← Back" : "AI Search"}
 						</button>
 
-						{/* User Avatar */}
-						<div className="hidden h-9 w-9 overflow-hidden rounded-full border border-white/30 bg-gray-700 sm:block">
+						{/* Avatar */}
+						<div className="hidden h-9 w-9 overflow-hidden rounded-full border border-white/30 bg-gray-700 md:block">
 							{user?.photoURL ? (
 								<img
 									src={user.photoURL}
@@ -100,8 +102,7 @@ const Header = () => {
 						{/* Sign Out */}
 						<button
 							onClick={handleSignOut}
-							// className="rounded-md bg-red-600 px-3 py-2 text-xs font-semibold text-white transition hover:bg-red-700 sm:px-4 sm:text-sm"
-							className="flex h-9 items-center text-white shadow-lg bg-red-600 hover:bg-red-700 justify-center rounded-md px-3 text-xs font-semibold whitespace-nowrap transition sm:h-10 sm:px-4 sm:text-sm"
+							className={`${buttonBase} bg-red-600 text-white hover:bg-red-700`}
 						>
 							Sign Out
 						</button>
