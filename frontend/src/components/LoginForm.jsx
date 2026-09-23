@@ -78,7 +78,7 @@ const LoginForm = () => {
 			className="w-full max-w-sm rounded-md bg-black/70 p-4 text-white sm:p-6"
 			onSubmit={handleSubmit}
 		>
-			<h1 className="py-2 text-2xl font-bold">
+			<h1 className="pb-3 text-2xl font-bold">
 				{isLogin ? "Login" : "Register"}
 			</h1>
 
@@ -133,7 +133,7 @@ const LoginForm = () => {
 			</button>
 
 			<p
-				className="cursor-pointer py-3 text-center text-sm text-gray-400 transition hover:text-white"
+				className="cursor-pointer py-0 text-center text-sm text-gray-400 transition hover:text-white"
 				onClick={toggleSignInForm}
 			>
 				{isLogin ? (
