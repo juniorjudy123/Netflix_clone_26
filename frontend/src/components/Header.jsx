@@ -54,7 +54,8 @@ const Header = () => {
 						{/* Watchlist */}
 						<button
 							onClick={() => navigate("/watchlist")}
-							className="rounded-md border border-white/20 bg-black/30 px-3 py-2 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 sm:px-4 sm:text-sm"
+							// className="rounded-md border border-white/20 bg-black/30 px-3 py-2 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 sm:px-4 sm:text-sm"
+							className="flex h-9 items-center justify-center rounded-md px-3 text-xs font-semibold whitespace-nowrap transition sm:h-10 sm:px-4 sm:text-sm"
 						>
 							My Watchlist
 						</button>
@@ -77,7 +78,8 @@ const Header = () => {
 						{/* AI Search */}
 						<button
 							onClick={handleGeminiSearchClick}
-							className="rounded-md bg-purple-600 px-2 py-1 text-xs font-semibold text-white shadow-lg transition hover:bg-purple-700 sm:px-4 sm:text-sm"
+							// className="rounded-md bg-purple-600 px-2 py-1 text-xs font-semibold text-white shadow-lg transition hover:bg-purple-700 sm:px-4 sm:text-sm"
+							className="flex h-9 items-center justify-center rounded-md px-3 text-xs font-semibold whitespace-nowrap transition sm:h-10 sm:px-4 sm:text-sm"
 						>
 							{GeminiSearch ? "← Back" : "AI Search"}
 						</button>
@@ -100,7 +102,8 @@ const Header = () => {
 						{/* Sign Out */}
 						<button
 							onClick={handleSignOut}
-							className="rounded-md bg-red-600 px-3 py-2 text-xs font-semibold text-white transition hover:bg-red-700 sm:px-4 sm:text-sm"
+							// className="rounded-md bg-red-600 px-3 py-2 text-xs font-semibold text-white transition hover:bg-red-700 sm:px-4 sm:text-sm"
+							className="flex h-9 items-center justify-center rounded-md px-3 text-xs font-semibold whitespace-nowrap transition sm:h-10 sm:px-4 sm:text-sm"
 						>
 							Sign Out
 						</button>
