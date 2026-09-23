@@ -4,17 +4,17 @@ const Footer = () => {
 	const navigate = useNavigate()
 
 	return (
-		<footer className="border-t border-white/10 bg-[#080808] px-6 py-12 text-gray-400 md:px-12 lg:px-16">
+		<footer className="border-t border-white/10 bg-[#080808] px-4 py-6 text-gray-400 sm:px-6 md:px-10 lg:px-12">
 			<div className="mx-auto max-w-[1600px]">
 				{/* Footer Top */}
-				<div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+				<div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
 					{/* Brand */}
 					<div className="max-w-sm">
-						<h2 className="text-xl font-bold tracking-wide text-white">
-							NETFLIX<span className="text-red-600">GPT</span>
+						<h2 className="text-lg font-bold tracking-wide text-white">
+							PRIME<span className="text-red-600">Time</span>
 						</h2>
 
-						<p className="mt-3 text-sm leading-6 text-gray-500">
+						<p className="mt-2 text-xs leading-5 text-gray-500">
 							Discover movies, explore new stories, and find your next favorite
 							film with AI-powered search.
 						</p>
@@ -22,11 +22,11 @@ const Footer = () => {
 
 					{/* Navigation */}
 					<div>
-						<h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+						<h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-white">
 							Explore
 						</h3>
 
-						<div className="flex flex-col gap-3 text-sm">
+						<div className="flex flex-col gap-1.5 text-xs">
 							<button
 								onClick={() => navigate("/browse")}
 								className="text-left transition hover:text-white"
@@ -45,11 +45,11 @@ const Footer = () => {
 
 					{/* Technology */}
 					<div>
-						<h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+						<h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-white">
 							Built With
 						</h3>
 
-						<div className="flex flex-col gap-3 text-sm">
+						<div className="flex flex-col gap-1.5 text-xs">
 							<span>React</span>
 							<span>Django REST Framework</span>
 							<span>TMDB API</span>
@@ -59,12 +59,11 @@ const Footer = () => {
 				</div>
 
 				{/* Divider */}
-				<div className="my-8 h-px bg-white/10" />
+				<div className="my-5 h-px bg-white/10" />
 
 				{/* Footer Bottom */}
-				<div className="flex flex-col gap-3 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between">
-					<p>© {new Date().getFullYear()} NetflixGPT. Built for learning.</p>
-
+				<div className="flex flex-col gap-2 text-[10px] text-gray-500 sm:flex-row sm:items-center sm:justify-between">
+					<p>© {new Date().getFullYear()} PrimeTime. Built for learning.</p>
 					<p>Movie data provided by TMDB.</p>
 				</div>
 			</div>

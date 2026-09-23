@@ -6,29 +6,32 @@ import { BG_URL } from "../utils/constants"
 
 function GeminiSearchPage() {
 	return (
-		<div className="relative flex min-h-screen flex-col bg-black">
+		<div className="relative flex min-h-screen flex-col bg-black ">
 			{/* Background */}
-			<div className="fixed inset-0 -z-10">
+			<div className="fixed inset-0 z-0">
 				<img
 					className="h-full w-full object-cover"
 					src={BG_URL}
 					alt="background-img"
 				/>
-				<div className="absolute inset-0 bg-black/60" />
+				<div className="absolute inset-0 bg-black/60 rounded-lg" />
 			</div>
 
 			{/* Header */}
-			<Header />
+			<div className="relative z-20">
+				<Header />
+			</div>
 
 			{/* Main Content */}
-			<main className="relative flex-1">
-				<div className="md:p-[2%]">
+			<main className="relative z-10 px-4  flex-1 pt-24 sm:pt-28 md:pt-32">
+				<div className="md:p-[2%] ">
 					<GeminiSearchBar />
 					<GeminiMovieSuggestions />
 				</div>
 			</main>
-
-			<Footer />
+			<div className="relative z-20 ">
+				<Footer />
+			</div>
 		</div>
 	)
 }

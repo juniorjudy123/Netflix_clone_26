@@ -74,10 +74,10 @@ function GeminiSearchBar() {
 	}
 
 	return (
-		<section className="relative z-20 flex min-h-[320px] items-center justify-center bg-linear-to-b from-black via-gray-950 to-black px-4 pb-10  sm:min-h-[380px] sm:pb-14 sm:pt-42">
+		<section className="relative z-20 flex min-h-[320px] items-center justify-center rounded-lg bg-linear-to-b from-black via-gray-950 to-black px-4 pb-10  sm:min-h-[380px] sm:pb-14 sm:pt-42">
 			<div className="w-full max-w-2xl">
 				{/* Heading */}
-				<div className="mb-6 text-center">
+				<div className="mb-6 text-center pt-6 sm:pt-0">
 					<div className="mb-3 inline-flex items-center gap-2 rounded-full border border-purple-400/20 bg-purple-500/10 px-3 py-1 text-xs font-medium text-purple-300">
 						<span>✦</span>
 						AI MOVIE DISCOVERY

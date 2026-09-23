@@ -9,7 +9,7 @@ function GeminiMovieSuggestions() {
 	if (!geminiSearch) return null
 
 	return (
-		<div className="p-4 m-4 bg-black text-white opacity-90">
+		<div className="p-4 m-2 rounded-lg bg-black text-white opacity-90">
 			<div>
 				{geminiSearch.map((movieName, index) => (
 					<MovieList
