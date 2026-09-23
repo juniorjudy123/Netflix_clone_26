@@ -10,6 +10,7 @@ const LoginForm = () => {
 	const [isLogin, setIsLogin] = useState(true)
 	const [errorMsg, SetErrorMsg] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
+	const [successMsg, setSuccessMsg] = useState("")
 	const dispatch = useDispatch()
 
 	const email = useRef(null)
@@ -22,7 +23,6 @@ const LoginForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		setIsLoading(true)
 		SetErrorMsg("")
 
 		const message = checkValidData(
@@ -32,6 +32,7 @@ const LoginForm = () => {
 		)
 		if (message) {
 			SetErrorMsg(message)
+			setIsLoading(false)
 			return
 		}
 		setIsLoading(true)
@@ -44,6 +45,9 @@ const LoginForm = () => {
 					email: email.current.value,
 					password: password.current.value,
 				})
+				setSuccessMsg("Account created successfully. Please sign in.")
+				SetErrorMsg("")
+				setIsLogin(true)
 			} else {
 				// LOGIN
 				const response = await axiosInstance.post("token/", {
@@ -63,7 +67,7 @@ const LoginForm = () => {
 		} catch (error) {
 			SetErrorMsg(
 				error.response?.data?.error ||
-					"Login failed. Please check your credentials and try again.",
+					"Authentication failed. Please try again.",
 			)
 		} finally {
 			setIsLoading(false)
@@ -100,6 +104,14 @@ const LoginForm = () => {
 				placeholder="Password"
 				className="my-2 w-full rounded-sm bg-gray-800 p-3 text-sm"
 			/>
+			{!isLogin && (
+				<p className="px-1 text-xs leading-5 text-gray-400">
+					Use at least 8 characters, including uppercase, lowercase, and a
+					number.
+				</p>
+			)}
+
+			<p className="min-h-5 text-sm text-green-500">{successMsg}</p>
 
 			<p className="min-h-5 text-sm text-red-600">{errorMsg}</p>
 
