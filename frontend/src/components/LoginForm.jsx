@@ -124,7 +124,7 @@ const LoginForm = () => {
 				className="cursor-pointer py-2 text-sm text-gray-300 hover:text-white"
 				onClick={toggleSignInForm}
 			>
-				{isLogin ? "New to Netflix? Sign Up" : "Already Registered. Sign In"}
+				{isLogin ? "New to PRIMETime? Sign Up" : "Already Registered. Sign In"}
 			</p>
 		</form>
 	)
