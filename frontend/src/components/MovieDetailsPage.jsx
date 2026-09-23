@@ -107,7 +107,7 @@ const MovieDetailsPage = () => {
 				{/* Backdrop Image */}
 				{/* Background Image */}
 				<div
-					className="absolute inset-0 bg-[length:auto_55%] bg-center bg-no-repeat md:bg-cover"
+					className="absolute inset-0 bg-[length:auto_60%] bg-center bg-no-repeat md:bg-cover"
 					style={{
 						backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
 					}}

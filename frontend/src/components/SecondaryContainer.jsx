@@ -15,7 +15,6 @@ function SecondaryContainer() {
 	return (
 		<section className="relative z-20 -mt-20 bg-gradient-to-b from-transparent via-black/90 to-black pt-6 md:-mt-52 md:pt-10">
 			<div className="space-y-5 px-6 pb-8 sm:px-8 md:px-10 lg:px-16">
-				s
 				{movies?.nowPlayingMovies?.length > 0 && (
 					<MovieList movies={movies.nowPlayingMovies} title="Now Playing" />
 				)}
