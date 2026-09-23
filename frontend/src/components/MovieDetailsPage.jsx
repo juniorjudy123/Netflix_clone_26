@@ -103,11 +103,11 @@ const MovieDetailsPage = () => {
 	return (
 		<main className="min-h-screen bg-[#080808] text-white">
 			{/* Background Hero */}
-			<section className="relative min-h-screen overflow-hidden">
+			<section className="relative min-h-[850px] overflow-hidden md:min-h-screen">
 				{/* Backdrop Image */}
 				{/* Background Image */}
 				<div
-					className="absolute inset-0 bg-cover bg-center"
+					className="absolute inset-0 bg-[length:auto_55%] bg-center bg-no-repeat md:bg-cover"
 					style={{
 						backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
 					}}
