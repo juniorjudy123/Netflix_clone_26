@@ -39,8 +39,8 @@ const Header = () => {
 		"flex h-8 items-center justify-center rounded-md px-2 text-[11px] font-semibold whitespace-nowrap shadow-lg transition sm:h-9 sm:px-3 sm:text-xs md:h-10 md:px-4 md:text-sm"
 
 	return (
-		<header className="absolute left-0 top-0 z-50 w-full bg-gradient-to-b from-black/90 via-black/40 to-transparent px-3 py-2 sm:px-6 sm:py-3 md:px-10 lg:px-12">
-			<div className="mx-auto flex max-w-[1600px] items-start justify-between gap-2">
+		<header className="absolute left-0 top-4 z-50 w-full bg-gradient-to-b from-black/90 via-black/40 to-transparent px-3 py-2 sm:top-6 sm:px-6 sm:py-3 md:px-10 lg:px-12">
+			<div className="mx-auto flex max-w-[1600px] items-center justify-between gap-2">
 				{/* Logo */}
 				<button onClick={() => navigate("/browse")} className="shrink-0">
 					<img
