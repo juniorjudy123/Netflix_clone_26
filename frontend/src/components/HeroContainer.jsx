@@ -8,7 +8,7 @@ const HeroContainer = ({ title, overview, movieId }) => {
 			<VideoBackground movieId={movieId} />
 
 			{/* Title Content */}
-			<div className="absolute inset-0 z-10 flex items-end pb-4 pt-24 md:pb-24">
+			<div className="absolute inset-0 z-10 flex items-end pb-6 pt-24 sm:pb-12 md:pb-24">
 				<VideoTitle title={title} overview={overview} />
 			</div>
 		</section>
