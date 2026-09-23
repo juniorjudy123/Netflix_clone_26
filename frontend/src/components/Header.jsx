@@ -46,8 +46,6 @@ const Header = () => {
 							className="h-12 w-12 object-contain sm:h-16 sm:w-16"
 						/>
 					</div>
-
-					{/* <h1 className="ml-3 text-xl font-bold text-white">NetflixGPT</h1> */}
 				</header>
 				{user && (
 					<div className="flex flex-wrap items-center justify-center gap-1 sm:gap-3 md:justify-end">
@@ -55,7 +53,7 @@ const Header = () => {
 						<button
 							onClick={() => navigate("/watchlist")}
 							// className="rounded-md border border-white/20 bg-black/30 px-3 py-2 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 sm:px-4 sm:text-sm"
-							className="flex h-9 items-center border-white/20 bg-black/30  hover:bg-white/15 justify-center rounded-md px-3 text-xs font-semibold whitespace-nowrap transition sm:h-10 sm:px-4 sm:text-sm"
+							className="flex h-9 items-center shadow-lg text-white border-white/20 bg-black/30  hover:bg-white/15 justify-center rounded-md px-3 text-xs font-semibold whitespace-nowrap transition sm:h-10 sm:px-4 sm:text-sm"
 						>
 							My Watchlist
 						</button>
@@ -79,7 +77,7 @@ const Header = () => {
 						<button
 							onClick={handleGeminiSearchClick}
 							// className="rounded-md bg-purple-600 px-2 py-1 text-xs font-semibold text-white shadow-lg transition hover:bg-purple-700 sm:px-4 sm:text-sm"
-							className="flex h-9 items-center bg-purple-600  hover:bg-purple-700 justify-center rounded-md px-3 text-xs font-semibold whitespace-nowrap transition sm:h-10 sm:px-4 sm:text-sm"
+							className="flex h-9 items-center bg-purple-600 text-white shadow-lg hover:bg-purple-700 justify-center rounded-md px-3 text-xs font-semibold whitespace-nowrap transition sm:h-10 sm:px-4 sm:text-sm"
 						>
 							{GeminiSearch ? "← Back" : "AI Search"}
 						</button>
@@ -103,7 +101,7 @@ const Header = () => {
 						<button
 							onClick={handleSignOut}
 							// className="rounded-md bg-red-600 px-3 py-2 text-xs font-semibold text-white transition hover:bg-red-700 sm:px-4 sm:text-sm"
-							className="flex h-9 items-center bg-red-600 hover:bg-red-700 justify-center rounded-md px-3 text-xs font-semibold whitespace-nowrap transition sm:h-10 sm:px-4 sm:text-sm"
+							className="flex h-9 items-center text-white shadow-lg bg-red-600 hover:bg-red-700 justify-center rounded-md px-3 text-xs font-semibold whitespace-nowrap transition sm:h-10 sm:px-4 sm:text-sm"
 						>
 							Sign Out
 						</button>
