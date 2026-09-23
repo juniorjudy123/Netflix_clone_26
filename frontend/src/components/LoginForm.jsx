@@ -121,10 +121,28 @@ const LoginForm = () => {
 			</button>
 
 			<p
-				className="cursor-pointer py-2 text-sm text-gray-300 hover:text-white"
+				className="cursor-pointer py-3 text-center text-sm text-gray-400 transition hover:text-white"
 				onClick={toggleSignInForm}
 			>
-				{isLogin ? "New to PRIMETime? Sign Up" : "Already Registered. Sign In"}
+				{isLogin ? (
+					<>
+						New to{" "}
+						<span className="font-bold tracking-wide text-white">
+							PRIME<span className="text-red-600">Time</span>
+						</span>
+						?{" "}
+						<span className="font-semibold text-white hover:text-red-400">
+							Sign Up
+						</span>
+					</>
+				) : (
+					<>
+						Already registered?{" "}
+						<span className="font-semibold text-red-500 hover:text-red-400">
+							Sign In
+						</span>
+					</>
+				)}
 			</p>
 		</form>
 	)
