@@ -40,7 +40,7 @@ const LoginForm = () => {
 		try {
 			if (!isLogin) {
 				// SIGN UP
-				const response = await axiosInstance.post("register/", {
+				await axiosInstance.post("register/", {
 					name: name.current.value,
 					email: email.current.value,
 					password: password.current.value,
@@ -51,6 +51,7 @@ const LoginForm = () => {
 				setIsLogin(true)
 			} else {
 				// LOGIN
+				setSuccessMsg("")
 				const response = await axiosInstance.post("token/", {
 					email: email.current.value,
 					password: password.current.value,
